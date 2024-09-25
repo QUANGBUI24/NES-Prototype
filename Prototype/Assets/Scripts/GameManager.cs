@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private float buttonWidth = 200;
     private float buttonHeight = 50;
     private bool showOptions = false;
+    private bool gamePause = false;
 
 
     // Create a custom GUIStyle for the game name
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
                 if (GUI.Button(new Rect(centerX, centerY, buttonWidth, buttonHeight), "Start"))
                 {
                     // Load the game scene (replace "GameScene" with your scene name)
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSelect");
                 }
 
                 // Options Button
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 // Options Menu UI (you can add more options here as needed)
-                GUI.Label(new Rect(centerX, centerY - 100, buttonWidth, buttonHeight), "Options Menu");
+                GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Options Menu", titleStyle);
 
                 // Back Button
                 if (GUI.Button(new Rect(centerX, centerY + 60, buttonWidth, buttonHeight), "Back"))
@@ -93,36 +94,106 @@ public class GameManager : MonoBehaviour
                     showOptions = false;
                 }
             }
-        } else if (currentScene == "SampleScene") {
+        } else if (currentScene == "Level1" || currentScene == "Level2" || currentScene == "Level3" || currentScene == "Level4" || currentScene == "Level5" || currentScene == "Level6") {
             // Game UI
             // Display the game UI here
-            if (!showOptions) {
+            if (!gamePause) {
                 // show a pause button in the top right corner
                 if (GUI.Button(new Rect(Screen.width - 100, 10, 90, 40), "Pause")) {
                     // Pause the game
                     Time.timeScale = 0;
-                    showOptions = true;
+                    gamePause = true;
                 }
             } else {
-                // Options Menu UI (you can add more options here as needed)
-                GUI.Label(new Rect(centerX, centerY - 100, buttonWidth, buttonHeight), "Options Menu");
+                if(!showOptions) {
+                    // Options Menu UI (you can add more options here as needed)
+                    GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Game Paused", titleStyle);
 
-                // Back Button
-                if (GUI.Button(new Rect(centerX, centerY + 60, buttonWidth, buttonHeight), "Back"))
-                {
-                    // Return to the game
-                    Time.timeScale = 1;
-                    showOptions = false;
-                }
+                    // Back Button
+                    if (GUI.Button(new Rect(centerX, centerY, buttonWidth, buttonHeight), "Back"))
+                    {
+                        // Return to the game
+                        Time.timeScale = 1;
+                        gamePause = false;
+                    }
 
-                // Exit Level Button
-                if (GUI.Button(new Rect(centerX, centerY + 120, buttonWidth, buttonHeight), "Exit Level"))
-                {
-                    // Load the main menu scene
-                    Time.timeScale = 1;
-                    showOptions = false;
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("StartMenu");
+                    // Exit Level Button
+                    if (GUI.Button(new Rect(centerX, centerY + 60, buttonWidth, buttonHeight), "Exit Level"))
+                    {
+                        // Load the main menu scene
+                        Time.timeScale = 1;
+                        gamePause = false;
+                        UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSelect");
+                    }
+
+                    // Options button
+                    if (GUI.Button(new Rect(centerX, centerY + 120, buttonWidth, buttonHeight), "Options"))
+                    {
+                        // Show options UI
+                        showOptions = true;
+                    }
+                } else {
+                    // Options Menu UI (you can add more options here as needed)
+                    GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Options Menu", titleStyle);
+
+                    // Back Button
+                    if (GUI.Button(new Rect(centerX, centerY + 60, buttonWidth, buttonHeight), "Back"))
+                    {
+                        // Return to the main menu
+                        showOptions = false;
+                    }
                 }
+            }
+        } else if (currentScene == "LevelSelect") {
+            // Level Select UI
+            // Display the level select UI here
+            // Level 1 Button
+            if (GUI.Button(new Rect(0, centerY + 50, 90, 40), "Level 1"))
+            {
+                // Load the game scene (replace "GameScene" with your scene name)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+            }
+
+            // Level 2 Button
+            if (GUI.Button(new Rect((Screen.width / 6), centerY - 50, 90, 40), "Level 2"))
+            {
+                // Load the game scene (replace "GameScene" with your scene name)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
+            }
+
+            // Level 3 Button
+            if (GUI.Button(new Rect((Screen.width / 6) * 2, centerY + 50, 90, 40), "Level 3"))
+            {
+                // Load the game scene (replace "GameScene" with your scene name)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
+            }
+
+            // Level 4 Button
+            if (GUI.Button(new Rect((Screen.width / 6) * 3, centerY - 50, 90, 40), "Level 4"))
+            {
+                // Load the game scene (replace "GameScene" with your scene name)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Level4");
+            }
+
+            // Level 5 Button
+            if (GUI.Button(new Rect((Screen.width / 6) * 4, centerY + 50, 90, 40), "Level 5"))
+            {
+                // Load the game scene (replace "GameScene" with your scene name)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Level5");
+            }
+
+            // Level 6 Button
+            if (GUI.Button(new Rect((Screen.width / 6) * 5, centerY - 50, 90, 40), "Level 6"))
+            {
+                // Load the game scene (replace "GameScene" with your scene name)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Level6");
+            }
+
+            // Back Button
+            if (GUI.Button(new Rect(Screen.width - 100, 10, 90, 40), "Back"))
+            {
+                // Load the main menu scene
+                UnityEngine.SceneManagement.SceneManager.LoadScene("StartMenu");
             }
         }
     }
