@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private float buttonHeight = 50;
     private bool showOptions = false;
     private bool gamePause = false;
+    private bool showInstructions = false;
 
 
     // Create a custom GUIStyle for the game name
@@ -84,15 +85,43 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                // Options Menu UI (you can add more options here as needed)
-                GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Options Menu", titleStyle);
+                if (!showInstructions) {
+                    // Options Menu UI (you can add more options here as needed)
+                    GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Options Menu", titleStyle);
 
-                // Back Button
-                if (GUI.Button(new Rect(centerX, centerY + 60, buttonWidth, buttonHeight), "Back"))
-                {
-                    // Return to the main menu
-                    showOptions = false;
+                    // Back Button
+                    if (GUI.Button(new Rect(centerX, centerY - 50, buttonWidth, buttonHeight), "Back"))
+                    {
+                        // Return to the main menu
+                        showOptions = false;
+                    }
+
+                    // Instructions Button
+                    if (GUI.Button(new Rect(centerX, centerY + 10, buttonWidth, buttonHeight), "Instructions"))
+                    {
+                        // Show instructions
+                        showInstructions = true;
+                    }
+
+                    GUI.Label(new Rect(centerX - 50, centerY + 65, buttonWidth + 50, buttonHeight), "Volume");
+                    // Volume Slider
+                    GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), 0.0f, 0.0f, 1.0f);
+
+                } else {
+                    // Instructions Menu UI (you can add more instructions here as needed)
+                    GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Instructions", titleStyle);
+                    GUI.Label(new Rect(centerX - 15, centerY - 60, buttonWidth + 50, buttonHeight), "You have to save your family by finding the cure.");
+                    GUI.Label(new Rect(centerX - 15, centerY - 20, buttonWidth + 50, buttonHeight), "Get through all the levels to find it.");
+                    GUI.Label(new Rect(centerX - 15, centerY + 20, buttonWidth + 50, buttonHeight), "Get money by killing zombies and upgrade your equipment.");
+
+                    // Back Button
+                    if (GUI.Button(new Rect(centerX, centerY + 60, buttonWidth, buttonHeight), "Back"))
+                    {
+                        // Return to the main menu
+                        showInstructions = false;
+                    }
                 }
+
             }
         } else if (currentScene == "Level1" || currentScene == "Level2" || currentScene == "Level3" || currentScene == "Level4" || currentScene == "Level5" || currentScene == "Level6") {
             // Game UI
@@ -133,14 +162,41 @@ public class GameManager : MonoBehaviour
                         showOptions = true;
                     }
                 } else {
-                    // Options Menu UI (you can add more options here as needed)
-                    GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Options Menu", titleStyle);
+                    if (!showInstructions) {
+                        // Options Menu UI (you can add more options here as needed)
+                        GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Options Menu", titleStyle);
 
-                    // Back Button
-                    if (GUI.Button(new Rect(centerX, centerY + 60, buttonWidth, buttonHeight), "Back"))
-                    {
-                        // Return to the main menu
-                        showOptions = false;
+                        // Back Button
+                        if (GUI.Button(new Rect(centerX, centerY - 50, buttonWidth, buttonHeight), "Back"))
+                        {
+                            // Return to the main menu
+                            showOptions = false;
+                        }
+
+                        // Instructions Button
+                        if (GUI.Button(new Rect(centerX, centerY + 10, buttonWidth, buttonHeight), "Instructions"))
+                        {
+                            // Show instructions
+                            showInstructions = true;
+                        }
+
+                        GUI.Label(new Rect(centerX - 50, centerY + 65, buttonWidth + 50, buttonHeight), "Volume");
+                        // Volume Slider
+                        GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), 0.0f, 0.0f, 1.0f);
+
+                    } else {
+                        // Instructions Menu UI (you can add more instructions here as needed)
+                        GUI.Label(new Rect(centerX - 15, centerY - 100, buttonWidth + 50, buttonHeight), "Instructions", titleStyle);
+                        GUI.Label(new Rect(centerX - 15, centerY - 60, buttonWidth + 50, buttonHeight), "You have to save your family by finding the cure.");
+                        GUI.Label(new Rect(centerX - 15, centerY - 20, buttonWidth + 50, buttonHeight), "Get through all the levels to find it.");
+                        GUI.Label(new Rect(centerX - 15, centerY + 20, buttonWidth + 50, buttonHeight), "Get money by killing zombies and upgrade your equipment.");
+
+                        // Back Button
+                        if (GUI.Button(new Rect(centerX, centerY + 60, buttonWidth, buttonHeight), "Back"))
+                        {
+                            // Return to the main menu
+                            showInstructions = false;
+                        }
                     }
                 }
             }
