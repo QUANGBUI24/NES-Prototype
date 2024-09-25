@@ -45,35 +45,36 @@ public class Shooting : MonoBehaviour
 
     void FireBullet()
     {
-        // Instantiate the bullet at the gun position
-        GameObject bullet = Instantiate(bullet_prefab, gun_transform.position, gun_transform.rotation);
+        // Determine the bullet's rotation based on the enemy's position
+        Quaternion bulletRotation;
+
+        if (isGroundEnemy)
+        {
+            // For ground enemies, shoot straight (no rotation needed)
+            bulletRotation = gun_transform.rotation;
+        }
+        else
+        {
+            // For air enemies, rotate the bullet to match the firstRayAngle
+            bulletRotation = Quaternion.Euler(0, 0, firstRayAngle);
+        }
+
+        // Instantiate the bullet with the determined rotation
+        GameObject bullet = Instantiate(bullet_prefab, gun_transform.position, bulletRotation);
 
         // Get the Rigidbody2D of the bullet and apply force to move it forward
         Rigidbody2D bullet_rigidbody = bullet.GetComponent<Rigidbody2D>();
 
         if (bullet_rigidbody != null)
         {
-            Vector2 shootDirection;
-
-            // Check if it's an air or ground enemy
-            if (isGroundEnemy)
-            {
-                // Apply force to the right (ground enemies, shoot straight)
-                shootDirection = gun_transform.right; // Shooting right (default)
-            }
-            else
-            {
-                // Apply force in the direction of the firstRayAngle for air enemies
-                shootDirection = new Vector2(Mathf.Cos(firstRayAngle * Mathf.Deg2Rad), Mathf.Sin(firstRayAngle * Mathf.Deg2Rad));
-            }
-
-            // Apply force in the calculated direction
-            bullet_rigidbody.AddForce(shootDirection * bullet_speed, ForceMode2D.Impulse);
+            // Always apply force in the bullet's forward (right) direction
+            bullet_rigidbody.AddForce(bullet.transform.right * bullet_speed, ForceMode2D.Impulse);
         }
 
         // Set the next time you are allowed to shoot
         next_fire_time = Time.time + fire_rate;
     }
+
 
     void RaycastDetection()
     {
