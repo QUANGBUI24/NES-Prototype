@@ -23,7 +23,6 @@ public class SpawnEnemy : MonoBehaviour
 
     void EnemyControl()
     {
-        Debug.Log($"Time: {next_spawn_time}");
         if (Time.time >= next_spawn_time)
         {
             if (is_auto_spawn)
