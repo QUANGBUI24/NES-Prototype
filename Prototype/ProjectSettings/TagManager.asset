@@ -10,6 +10,12 @@ TagManager:
   - Bullet
   - Wall
   - CheckPoint
+  - FirstStage
+  - SecondStage
+  - ThirdStage
+  - CheckPoint2
+  - CheckPoint3
+  - FourthStage
   layers:
   - Default
   - TransparentFX

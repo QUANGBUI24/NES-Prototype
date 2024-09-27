@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6006741617306662919}
   m_Layer: 0
-  m_Name: SpawningPoints
+  m_Name: Secon Stage Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_auto_spawn: 1
-  enemy_prefab: {fileID: 3809059737439992366, guid: d5ad3dae3735bb942a01fe26c073bf28, type: 3}
+  enemy_prefab: {fileID: 3809059737439992366, guid: 33f486354c1dc4b469188e5595299e35, type: 3}
   spawn_point: {fileID: 5547052770135872727}
   spawn_rate: 3
 --- !u!1 &5593255409843758707
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_auto_spawn: 1
-  enemy_prefab: {fileID: 7878599692485595357, guid: 2e11e185e8d0c9c4791c0cec926436d7, type: 3}
+  enemy_prefab: {fileID: 7878599692485595357, guid: a7108f39b8766f14b9fe63863d840421, type: 3}
   spawn_point: {fileID: 7998189434580158903}
   spawn_rate: 8
 --- !u!1 &8930589466219271794
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_auto_spawn: 1
-  enemy_prefab: {fileID: 7878599692485595357, guid: 836632204aeb16e459c3b454b7939552, type: 3}
+  enemy_prefab: {fileID: 7878599692485595357, guid: a05db84eb004df241bbaa2f601bf215c, type: 3}
   spawn_point: {fileID: 1363342294262156429}
   spawn_rate: 5
 --- !u!1 &8960927113094907339
@@ -224,6 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_auto_spawn: 1
-  enemy_prefab: {fileID: 3809059737439992366, guid: 17dc3f4425f558040b003ad000316bdc, type: 3}
+  enemy_prefab: {fileID: 3809059737439992366, guid: cc5a02ab3bb548541bfbf6b61ca0466c, type: 3}
   spawn_point: {fileID: 4015378186801929861}
   spawn_rate: 6

@@ -97,7 +97,7 @@ public class Shooting : MonoBehaviour
         {
             isGroundEnemy = false;
             activeShootAngle = firstRayAngle;
-            Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
+            //Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
             canShoot = true; // Allow shooting if an enemy is detected
         }
 
@@ -108,7 +108,7 @@ public class Shooting : MonoBehaviour
         {
             isGroundEnemy = false;
             activeShootAngle = secondRayAngle;
-            Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
+            //Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
             canShoot = true; // Allow shooting if an enemy is detected
         }
 
@@ -119,7 +119,7 @@ public class Shooting : MonoBehaviour
         {
             isGroundEnemy = false;
             activeShootAngle = thirdRayAngle;
-            Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
+            //Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
             canShoot = true; // Allow shooting if an enemy is detected
         }
 
@@ -130,7 +130,7 @@ public class Shooting : MonoBehaviour
         {
             isGroundEnemy = true;
             activeShootAngle = fourthRayAngle;
-            Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
+            //Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
             canShoot = true; // Allow shooting if an enemy is detected
         }
     }
