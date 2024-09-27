@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     private int playerHealth;
     private int playerArmor;
     private int playerMoney;
+    private int playerWeaponLevel;
+    private int playerVehicleLevel;
+    private int playerArmorLevel;
 
 
     // Create a custom GUIStyle for the game name
@@ -27,10 +30,6 @@ public class GameManager : MonoBehaviour
         playerHealth = PlayerPrefs.GetInt("PlayerHealth", 100);
         playerArmor = PlayerPrefs.GetInt("PlayerArmor", 0);
         playerMoney = PlayerPrefs.GetInt("PlayerMoney", 0);
-
-        // Play audio
-
-        // Mark objects as DontDestroyOnLoad
 
         // Create a custom GUIStyle for the game name
         titleStyle = new GUIStyle();
@@ -48,6 +47,8 @@ public class GameManager : MonoBehaviour
         playerHealth = PlayerPrefs.GetInt("PlayerHealth");
         playerArmor = PlayerPrefs.GetInt("PlayerArmor");
         playerMoney = PlayerPrefs.GetInt("PlayerMoney");
+        playerWeaponLevel = PlayerPrefs.GetInt("PlayerWeaponLevel");
+        playerVehicleLevel = PlayerPrefs.GetInt("PlayerVehicleLevel");
     }
 
     // GUI function
@@ -134,7 +135,34 @@ public class GameManager : MonoBehaviour
                 if (GUI.Button(new Rect(Screen.width - 100, 10, 90, 40), "Pause")) {
                     // Pause the game
                     Time.timeScale = 0;
+                    PlayerPrefs.SetInt("GamePaused", 1);
                     gamePause = true;
+                }
+
+                // show level up buttons for weapon, vehicle, and armor
+                if (GUI.Button(new Rect(10, Screen.height - 50, 120, 40), "Level Up Weapon")) {
+                    // Level up the weapon
+                    if (playerMoney >= 100) {
+                        playerMoney -= 100;
+                        PlayerPrefs.SetInt("PlayerWeaponLevel", PlayerPrefs.GetInt("PlayerWeaponLevel") + 1);
+                    }
+                }
+                if (GUI.Button(new Rect(210, Screen.height - 50, 120, 40), "Level Up Vehicle")) {
+                    // Level up the vehicle
+                    if (playerMoney >= 100) {
+                        playerMoney -= 100;
+                        PlayerPrefs.SetInt("PlayerVehicleLevel", PlayerPrefs.GetInt("PlayerVehicleLevel") + 1);
+                    }
+                }
+                if (GUI.Button(new Rect(410, Screen.height - 50, 120, 40), "Level Up Armor")) {
+                    // Level up the armor
+                    if (playerMoney >= 100 && PlayerPrefs.GetInt("PlayerArmor") < 100) {
+                        playerMoney -= 100;
+                        if (PlayerPrefs.GetInt("PlayerArmor") < 100) {
+                            PlayerPrefs.SetInt("PlayerArmor", (PlayerPrefs.GetInt("PlayerArmor") + 25 < 100) ? PlayerPrefs.GetInt("PlayerArmor") + 25 : 100);
+                        }
+                        
+                    }
                 }
 
                 // Display the player's health, armor, and money
@@ -153,6 +181,7 @@ public class GameManager : MonoBehaviour
                         // Return to the game
                         Time.timeScale = 1;
                         gamePause = false;
+                        PlayerPrefs.SetInt("GamePaused", 0);
                     }
 
                     // Exit Level Button
