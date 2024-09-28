@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private int playerWeaponLevel;
     private int playerVehicleLevel;
     private int playerArmorLevel;
+    private int volumeVal;
 
 
     // Create a custom GUIStyle for the game name
@@ -27,9 +28,14 @@ public class GameManager : MonoBehaviour
     {   
         currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         // Load any player data
-        playerHealth = PlayerPrefs.GetInt("PlayerHealth", 100);
-        playerArmor = PlayerPrefs.GetInt("PlayerArmor", 0);
-        playerMoney = PlayerPrefs.GetInt("PlayerMoney", 0);
+        playerHealth = PlayerPrefs.GetInt("PlayerHealth");
+        if (playerHealth == 0) {
+            PlayerPrefs.SetInt("PlayerHealth", 100);
+            playerHealth = 100;
+        }
+        playerArmor = PlayerPrefs.GetInt("PlayerArmor");
+        playerMoney = PlayerPrefs.GetInt("PlayerMoney");
+        volumeVal = PlayerPrefs.GetInt("Volume");
 
         // Create a custom GUIStyle for the game name
         titleStyle = new GUIStyle();
@@ -49,6 +55,14 @@ public class GameManager : MonoBehaviour
         playerMoney = PlayerPrefs.GetInt("PlayerMoney");
         playerWeaponLevel = PlayerPrefs.GetInt("PlayerWeaponLevel");
         playerVehicleLevel = PlayerPrefs.GetInt("PlayerVehicleLevel");
+
+        // Save the player data
+        PlayerPrefs.SetInt("PlayerHealth", playerHealth);
+        PlayerPrefs.SetInt("PlayerArmor", playerArmor);
+        PlayerPrefs.SetInt("PlayerMoney", playerMoney);
+        PlayerPrefs.SetInt("PlayerWeaponLevel", playerWeaponLevel);
+        PlayerPrefs.SetInt("PlayerVehicleLevel", playerVehicleLevel);
+        PlayerPrefs.SetInt("Volume", volumeVal);
     }
 
     // GUI function
@@ -109,7 +123,7 @@ public class GameManager : MonoBehaviour
 
                     GUI.Label(new Rect(centerX - 50, centerY + 65, buttonWidth + 50, buttonHeight), "Volume");
                     // Volume Slider
-                    GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), 0.0f, 0.0f, 1.0f);
+                    volumeVal = (int)GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), (float)volumeVal, 0.0f, 100.0f);
 
                 } else {
                     // Instructions Menu UI (you can add more instructions here as needed)
@@ -143,21 +157,21 @@ public class GameManager : MonoBehaviour
                 if (GUI.Button(new Rect(10, Screen.height - 50, 120, 40), "Level Up Weapon")) {
                     // Level up the weapon
                     if (playerMoney >= 100) {
-                        playerMoney -= 100;
+                        PlayerPrefs.SetInt("PlayerMoney", PlayerPrefs.GetInt("PlayerMoney") - 100);
                         PlayerPrefs.SetInt("PlayerWeaponLevel", PlayerPrefs.GetInt("PlayerWeaponLevel") + 1);
                     }
                 }
                 if (GUI.Button(new Rect(210, Screen.height - 50, 120, 40), "Level Up Vehicle")) {
                     // Level up the vehicle
                     if (playerMoney >= 100) {
-                        playerMoney -= 100;
+                        PlayerPrefs.SetInt("PlayerMoney", PlayerPrefs.GetInt("PlayerMoney") - 100);
                         PlayerPrefs.SetInt("PlayerVehicleLevel", PlayerPrefs.GetInt("PlayerVehicleLevel") + 1);
                     }
                 }
                 if (GUI.Button(new Rect(410, Screen.height - 50, 120, 40), "Level Up Armor")) {
                     // Level up the armor
                     if (playerMoney >= 100 && PlayerPrefs.GetInt("PlayerArmor") < 100) {
-                        playerMoney -= 100;
+                        PlayerPrefs.SetInt("PlayerMoney", PlayerPrefs.GetInt("PlayerMoney") - 100);
                         if (PlayerPrefs.GetInt("PlayerArmor") < 100) {
                             PlayerPrefs.SetInt("PlayerArmor", (PlayerPrefs.GetInt("PlayerArmor") + 25 < 100) ? PlayerPrefs.GetInt("PlayerArmor") + 25 : 100);
                         }
@@ -166,9 +180,11 @@ public class GameManager : MonoBehaviour
                 }
 
                 // Display the player's health, armor, and money
-                GUI.Label(new Rect(10, 10, 200, 20), "Health: " + playerHealth);
-                GUI.Label(new Rect(10, 30, 200, 20), "Armor: " + playerArmor);
-                GUI.Label(new Rect(10, 50, 200, 20), "Money: " + playerMoney);
+                GUI.Label(new Rect(10, 10, 200, 20), "Health: " + PlayerPrefs.GetInt("PlayerHealth"));
+                GUI.Label(new Rect(10, 30, 200, 20), "Armor: " + PlayerPrefs.GetInt("PlayerArmor"));
+                GUI.Label(new Rect(10, 50, 200, 20), "Money: " + PlayerPrefs.GetInt("PlayerMoney"));
+                GUI.Label(new Rect(10, 70, 200, 20), "Weapon Level: " + PlayerPrefs.GetInt("PlayerWeaponLevel"));
+                GUI.Label(new Rect(10, 90, 200, 20), "Vehicle Level: " + PlayerPrefs.GetInt("PlayerVehicleLevel"));
 
             } else {
                 if(!showOptions) {
@@ -221,7 +237,7 @@ public class GameManager : MonoBehaviour
                         // Volume Label
                         GUI.Label(new Rect(centerX - 50, centerY + 65, buttonWidth + 50, buttonHeight), "Volume");
                         // Volume Slider
-                        GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), 0.0f, 0.0f, 1.0f);
+                        volumeVal = (int)GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), (float)volumeVal, 0.0f, 100.0f);
 
                     } else {
                         // Instructions Menu UI (you can add more instructions here as needed)
