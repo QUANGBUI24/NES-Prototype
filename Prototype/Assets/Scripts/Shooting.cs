@@ -12,11 +12,18 @@ public class Shooting : MonoBehaviour
     private float next_fire_time = 0f; // Tracks when the gun can shoot next
 
     public float firstRayDistance = 14f;
-    public float secondRayDistance = 16f;
+    public float secondRayDistance = 12f;
+    public float thirdRayDistance = 10f;
+    public float fourthRayDistance = 16f;
+
     public float firstRayAngle = 20f;
-    public float secondRayAngle = 0f;
+    public float secondRayAngle = 25f;
+    public float thirdRayAngle = 30f;
+    public float fourthRayAngle = 0f;
+
     private bool canShoot = false; // Flag to control whether the gun can shoot
     private bool isGroundEnemy = false;
+    private float activeShootAngle = 0f; // Store the angle of the ray that detected the enemy
 
     void Update()
     {
@@ -56,7 +63,7 @@ public class Shooting : MonoBehaviour
         else
         {
             // For air enemies, rotate the bullet to match the firstRayAngle
-            bulletRotation = Quaternion.Euler(0, 0, firstRayAngle);
+            bulletRotation = Quaternion.Euler(0, 0, activeShootAngle);
         }
 
         // Instantiate the bullet with the determined rotation
@@ -89,17 +96,41 @@ public class Shooting : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Enemy"))
         {
             isGroundEnemy = false;
-            Debug.Log("Hit enemy at " + firstRayAngle + " degrees: " + hit.collider.name);
+            activeShootAngle = firstRayAngle;
+            //Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
             canShoot = true; // Allow shooting if an enemy is detected
         }
 
         Vector2 secondDirection = Quaternion.Euler(0, 0, secondRayAngle) * Vector2.right;
-        Debug.DrawRay(transform.position, secondDirection * secondRayDistance, Color.green);
+        Debug.DrawRay(transform.position, secondDirection * secondRayDistance, Color.blue);
         hit = Physics2D.Raycast(transform.position, secondDirection, secondRayDistance);
         if (hit.collider != null && hit.collider.CompareTag("Enemy"))
         {
+            isGroundEnemy = false;
+            activeShootAngle = secondRayAngle;
+            //Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
+            canShoot = true; // Allow shooting if an enemy is detected
+        }
+
+        Vector2 thirdDirection = Quaternion.Euler(0, 0, thirdRayAngle) * Vector2.right;
+        Debug.DrawRay(transform.position, thirdDirection * thirdRayDistance, Color.yellow);
+        hit = Physics2D.Raycast(transform.position, thirdDirection, thirdRayDistance);
+        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        {
+            isGroundEnemy = false;
+            activeShootAngle = thirdRayAngle;
+            //Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
+            canShoot = true; // Allow shooting if an enemy is detected
+        }
+
+        Vector2 fourthDirection = Quaternion.Euler(0, 0, fourthRayAngle) * Vector2.right;
+        Debug.DrawRay(transform.position, fourthDirection * fourthRayDistance, Color.green);
+        hit = Physics2D.Raycast(transform.position, fourthDirection, fourthRayDistance);
+        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        {
             isGroundEnemy = true;
-            Debug.Log("Hit enemy at " + secondRayAngle + " degrees: " + hit.collider.name);
+            activeShootAngle = fourthRayAngle;
+            //Debug.Log("Hit enemy at " + activeShootAngle + " degrees: " + hit.collider.name);
             canShoot = true; // Allow shooting if an enemy is detected
         }
     }
