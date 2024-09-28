@@ -36,19 +36,19 @@ public class TriggerSpawn : MonoBehaviour
         {
             spawningObject2.SetActive(true);
             spawningObject1.SetActive(false);
-            Debug.Log("First Check Point!");
+            //Debug.Log("First Check Point!");
         }
         else if(hit.collider != null && hit.collider.CompareTag("CheckPoint2"))
         {
             spawningObject3.SetActive(true);
             spawningObject2.SetActive(false);
-            Debug.Log("Second Check Point!");
+            //Debug.Log("Second Check Point!");
         }
         else if (hit.collider != null && hit.collider.CompareTag("CheckPoint3"))
         {
             spawningObject4.SetActive(true);
             spawningObject3.SetActive(false);
-            Debug.Log("Third Check Point!");
+            //Debug.Log("Third Check Point!");
         }
     }
 }
