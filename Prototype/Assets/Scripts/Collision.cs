@@ -28,6 +28,7 @@ public class Collision : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            PlayerPrefs.SetInt("PlayerMoney", PlayerPrefs.GetInt("PlayerMoney") + 10);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }

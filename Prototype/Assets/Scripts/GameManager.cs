@@ -153,21 +153,21 @@ public class GameManager : MonoBehaviour
                 if (GUI.Button(new Rect(10, Screen.height - 50, 120, 40), "Level Up Weapon")) {
                     // Level up the weapon
                     if (playerMoney >= 100) {
-                        playerMoney -= 100;
+                        PlayerPrefs.SetInt("PlayerMoney", PlayerPrefs.GetInt("PlayerMoney") - 100);
                         PlayerPrefs.SetInt("PlayerWeaponLevel", PlayerPrefs.GetInt("PlayerWeaponLevel") + 1);
                     }
                 }
                 if (GUI.Button(new Rect(210, Screen.height - 50, 120, 40), "Level Up Vehicle")) {
                     // Level up the vehicle
                     if (playerMoney >= 100) {
-                        playerMoney -= 100;
+                        PlayerPrefs.SetInt("PlayerMoney", PlayerPrefs.GetInt("PlayerMoney") - 100);
                         PlayerPrefs.SetInt("PlayerVehicleLevel", PlayerPrefs.GetInt("PlayerVehicleLevel") + 1);
                     }
                 }
                 if (GUI.Button(new Rect(410, Screen.height - 50, 120, 40), "Level Up Armor")) {
                     // Level up the armor
                     if (playerMoney >= 100 && PlayerPrefs.GetInt("PlayerArmor") < 100) {
-                        playerMoney -= 100;
+                        PlayerPrefs.SetInt("PlayerMoney", PlayerPrefs.GetInt("PlayerMoney") - 100);
                         if (PlayerPrefs.GetInt("PlayerArmor") < 100) {
                             PlayerPrefs.SetInt("PlayerArmor", (PlayerPrefs.GetInt("PlayerArmor") + 25 < 100) ? PlayerPrefs.GetInt("PlayerArmor") + 25 : 100);
                         }
@@ -176,9 +176,11 @@ public class GameManager : MonoBehaviour
                 }
 
                 // Display the player's health, armor, and money
-                GUI.Label(new Rect(10, 10, 200, 20), "Health: " + playerHealth);
-                GUI.Label(new Rect(10, 30, 200, 20), "Armor: " + playerArmor);
-                GUI.Label(new Rect(10, 50, 200, 20), "Money: " + playerMoney);
+                GUI.Label(new Rect(10, 10, 200, 20), "Health: " + PlayerPrefs.GetInt("PlayerHealth"));
+                GUI.Label(new Rect(10, 30, 200, 20), "Armor: " + PlayerPrefs.GetInt("PlayerArmor"));
+                GUI.Label(new Rect(10, 50, 200, 20), "Money: " + PlayerPrefs.GetInt("PlayerMoney"));
+                GUI.Label(new Rect(10, 70, 200, 20), "Weapon Level: " + PlayerPrefs.GetInt("PlayerWeaponLevel"));
+                GUI.Label(new Rect(10, 90, 200, 20), "Vehicle Level: " + PlayerPrefs.GetInt("PlayerVehicleLevel"));
 
             } else {
                 if(!showOptions) {
