@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1561504993353455815, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: m_Name
+      value: TopInvisibleWall
+      objectReference: {fileID: 0}
     - target: {fileID: 1628413663238426116, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
       propertyPath: player_speed
       value: 0.8
