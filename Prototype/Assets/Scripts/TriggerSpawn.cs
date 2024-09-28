@@ -51,30 +51,4 @@ public class TriggerSpawn : MonoBehaviour
             Debug.Log("Third Check Point!");
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(gameObject.tag == "Player")
-    //    {
-    //        if (collision.gameObject.tag == "CheckPoint")
-    //        {
-    //            spawningObject2.SetActive(true);
-    //            spawningObject1.SetActive(false);
-    //            Debug.Log("First Check Point!");
-    //        }
-    //        else if (collision.gameObject.tag == "CheckPoint2")
-    //        {
-    //            spawningObject3.SetActive(true);
-    //            spawningObject2.SetActive(false);
-    //            Debug.Log("Second Check Point!");
-    //        }
-    //        else if (collision.gameObject.tag == "CheckPoint3")
-    //        {
-    //            spawningObject4.SetActive(true);
-    //            spawningObject3.SetActive(false);
-    //            Debug.Log("Third Check Point!");
-    //        }
-    //    }
-
-    //}
 }

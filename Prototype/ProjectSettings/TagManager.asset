@@ -9,6 +9,9 @@ TagManager:
   - BulletSpawn
   - Bullet
   - Wall
+  - CheckPoint
+  - CheckPoint2
+  - CheckPoint3
   layers:
   - Default
   - TransparentFX
