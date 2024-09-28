@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
         currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         // Load any player data
         playerHealth = PlayerPrefs.GetInt("PlayerHealth");
+        if (playerHealth == 0) {
+            PlayerPrefs.SetInt("PlayerHealth", 100);
+            playerHealth = 100;
+        }
         playerArmor = PlayerPrefs.GetInt("PlayerArmor");
         playerMoney = PlayerPrefs.GetInt("PlayerMoney");
         volumeVal = PlayerPrefs.GetInt("Volume");
