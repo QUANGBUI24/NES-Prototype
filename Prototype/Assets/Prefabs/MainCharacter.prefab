@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3519083928220940507}
   - component: {fileID: 852530460784357145}
+  - component: {fileID: 6008878896680097351}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -47,7 +48,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1db7d46b2bdf74e85bd518306cf557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 17
+  is_auto_shoot: 1
+  bullet_prefab: {fileID: 7600055044702568938, guid: a73a36e220268084ab79900cb38d0133, type: 3}
+  gun_transform: {fileID: 2002359696060909873}
+  bullet_speed: 10
+  fire_rate: 0.8
+  firstRayDistance: 14
+  secondRayDistance: 16
+  firstRayAngle: 20
+  secondRayAngle: 0
+--- !u!114 &6008878896680097351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482079994514389341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22afc431651a73246a753fbf4258c77b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move_speed: 5
 --- !u!1001 &1044899364118119248
 PrefabInstance:
   m_ObjectHideFlags: 0
