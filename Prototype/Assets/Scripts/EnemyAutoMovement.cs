@@ -15,6 +15,8 @@ public class EnemyAutoMovement : MonoBehaviour
 
     void AutoMove()
     {
-        transform.Translate(Vector3.left * move_speed * Time.fixedDeltaTime);
+        if (PlayerPrefs.GetInt("GamePaused") != 1) {
+            transform.Translate(Vector3.left * move_speed * Time.fixedDeltaTime);
+        }
     }
 }
