@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private int playerWeaponLevel;
     private int playerVehicleLevel;
     private int playerArmorLevel;
+    private int volumeVal;
 
 
     // Create a custom GUIStyle for the game name
@@ -27,9 +28,10 @@ public class GameManager : MonoBehaviour
     {   
         currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         // Load any player data
-        playerHealth = PlayerPrefs.GetInt("PlayerHealth", 100);
-        playerArmor = PlayerPrefs.GetInt("PlayerArmor", 0);
-        playerMoney = PlayerPrefs.GetInt("PlayerMoney", 0);
+        playerHealth = PlayerPrefs.GetInt("PlayerHealth");
+        playerArmor = PlayerPrefs.GetInt("PlayerArmor");
+        playerMoney = PlayerPrefs.GetInt("PlayerMoney");
+        volumeVal = PlayerPrefs.GetInt("Volume");
 
         // Create a custom GUIStyle for the game name
         titleStyle = new GUIStyle();
@@ -49,6 +51,14 @@ public class GameManager : MonoBehaviour
         playerMoney = PlayerPrefs.GetInt("PlayerMoney");
         playerWeaponLevel = PlayerPrefs.GetInt("PlayerWeaponLevel");
         playerVehicleLevel = PlayerPrefs.GetInt("PlayerVehicleLevel");
+
+        // Save the player data
+        PlayerPrefs.SetInt("PlayerHealth", playerHealth);
+        PlayerPrefs.SetInt("PlayerArmor", playerArmor);
+        PlayerPrefs.SetInt("PlayerMoney", playerMoney);
+        PlayerPrefs.SetInt("PlayerWeaponLevel", playerWeaponLevel);
+        PlayerPrefs.SetInt("PlayerVehicleLevel", playerVehicleLevel);
+        PlayerPrefs.SetInt("Volume", volumeVal);
     }
 
     // GUI function
@@ -109,7 +119,7 @@ public class GameManager : MonoBehaviour
 
                     GUI.Label(new Rect(centerX - 50, centerY + 65, buttonWidth + 50, buttonHeight), "Volume");
                     // Volume Slider
-                    GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), 0.0f, 0.0f, 1.0f);
+                    volumeVal = (int)GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), (float)volumeVal, 0.0f, 100.0f);
 
                 } else {
                     // Instructions Menu UI (you can add more instructions here as needed)
@@ -221,7 +231,7 @@ public class GameManager : MonoBehaviour
                         // Volume Label
                         GUI.Label(new Rect(centerX - 50, centerY + 65, buttonWidth + 50, buttonHeight), "Volume");
                         // Volume Slider
-                        GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), 0.0f, 0.0f, 1.0f);
+                        volumeVal = (int)GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), (float)volumeVal, 0.0f, 100.0f);
 
                     } else {
                         // Instructions Menu UI (you can add more instructions here as needed)
