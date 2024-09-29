@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         playerArmor = PlayerPrefs.GetInt("PlayerArmor");
         playerMoney = PlayerPrefs.GetInt("PlayerMoney");
         volumeVal = PlayerPrefs.GetInt("Volume");
+        PlayerPrefs.SetInt("GamePaused", 0);
 
         // Create a custom GUIStyle for the game name
         titleStyle = new GUIStyle();
@@ -124,6 +125,17 @@ public class GameManager : MonoBehaviour
                     GUI.Label(new Rect(centerX - 50, centerY + 65, buttonWidth + 50, buttonHeight), "Volume");
                     // Volume Slider
                     volumeVal = (int)GUI.HorizontalSlider(new Rect(centerX, centerY + 70, buttonWidth, buttonHeight), (float)volumeVal, 0.0f, 100.0f);
+
+                    // Reset Stats Button
+                    if (GUI.Button(new Rect(centerX, centerY + 130, buttonWidth, buttonHeight), "Reset Stats"))
+                    {
+                        // Reset player stats
+                        PlayerPrefs.SetInt("PlayerHealth", 100);
+                        PlayerPrefs.SetInt("PlayerArmor", 0);
+                        PlayerPrefs.SetInt("PlayerMoney", 0);
+                        PlayerPrefs.SetInt("PlayerWeaponLevel", 1);
+                        PlayerPrefs.SetInt("PlayerVehicleLevel", 1);
+                    }
 
                 } else {
                     // Instructions Menu UI (you can add more instructions here as needed)
