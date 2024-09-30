@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AutoMovement : MonoBehaviour
 {
-    public float enemy_speed = 3f;           // Speed for straight movement
-    public float strike_speed = 5f;          // Speed for striking towards the player
+    public float enemySpeed = 3f;           // Speed for straight movement
+    public float strikeSpeed = 5f;          // Speed for striking towards the player
     public float straightDuration = 8f;      // Time before the enemy starts striking
 
     public float player_speed = 3f;          // Speed for player movement
-    public bool is_main_character = false;   // Flag to determine if this is the player
-    public bool is_flying_enemy = false;     // Flag to determine if this is a flying enemy
+    public bool isMainCharacter = false;   // Flag to determine if this is the player
+    public bool isFlyingEnemy = false;     // Flag to determine if this is a flying enemy
 
     private GameObject player;               // Reference to the player GameObject
     private bool isStriking = false;         // Track whether the enemy is in striking phase
@@ -19,7 +19,7 @@ public class AutoMovement : MonoBehaviour
     void Start()
     {
         // If this is a flying enemy, find the player and start straight movement phase
-        if (is_flying_enemy)
+        if (isFlyingEnemy)
         {
             player = GameObject.FindGameObjectWithTag("Player");
             StartCoroutine(StraightFlight());
@@ -36,29 +36,29 @@ public class AutoMovement : MonoBehaviour
 
     void AutoMove()
     {
-        if (is_main_character)
+        if (isMainCharacter)
         {
             // Player moves to the right continuously
             transform.Translate(Vector3.right * player_speed * Time.fixedDeltaTime);
         }
-        else if (is_flying_enemy)
+        else if (isFlyingEnemy)
         {
             if (isStriking)
             {
                 // Move towards the player's position when in striking phase
                 Vector3 direction = (targetPosition - transform.position).normalized;
-                transform.position += direction * strike_speed * Time.deltaTime;
+                transform.position += direction * strikeSpeed * Time.deltaTime;
             }
             else
             {
                 // Move straight left before switching to striking phase
-                transform.Translate(Vector3.left * enemy_speed * Time.fixedDeltaTime);
+                transform.Translate(Vector3.left * enemySpeed * Time.fixedDeltaTime);
             }
         }
         else
         {
             // Normal enemy movement to the left
-            transform.Translate(Vector3.left * enemy_speed * Time.fixedDeltaTime);
+            transform.Translate(Vector3.left * enemySpeed * Time.fixedDeltaTime);
         }
     }
 
