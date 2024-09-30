@@ -147,16 +147,36 @@ PrefabInstance:
       value: 10.71
       objectReference: {fileID: 0}
     - target: {fileID: 1628413663238426116, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: enemy_speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628413663238426116, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
       propertyPath: player_speed
-      value: 0.5
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628413663238426116, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: strike_speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628413663238426116, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: straightDuration
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3064639024092453777, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 3393642136858008308, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
       propertyPath: m_Name
       value: PlayerSetup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472451663378047323, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472451663378047323, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.33
       objectReference: {fileID: 0}
     - target: {fileID: 4241008595312290167, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
       propertyPath: m_LocalPosition.x
@@ -205,6 +225,30 @@ PrefabInstance:
     - target: {fileID: 7496314354572934740, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496314354572934740, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: firstRayAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496314354572934740, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: thirdRayAngle
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496314354572934740, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: secondRayAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496314354572934740, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: firstRayDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496314354572934740, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: thirdRayDistance
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496314354572934740, guid: a7c02882e2aff2d46abbc6ef7a5bc907, type: 3}
+      propertyPath: secondRayDistance
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
