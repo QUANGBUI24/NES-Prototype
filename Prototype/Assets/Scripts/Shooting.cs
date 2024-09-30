@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public bool is_auto_shoot = true;
-    public GameObject bullet_prefab;
-    public Transform gun_transform;
-    public float bullet_speed = 20f;  // Speed of the bullet
-    public float fire_rate = 1.0f; // Time in seconds between each shot
-    private float next_fire_time = 0f; // Tracks when the gun can shoot next
+    public bool isAutoShoot = true;
+    public GameObject bulletPrefab;
+    public Transform gunTransform;
+    public float bulletSpeed = 20f;  // Speed of the bullet
+    public float fireRate = 1.0f; // Time in seconds between each shot
+    private float nextFireTime = 0f; // Tracks when the gun can shoot next
+    public int bulletDamage = 50;
 
     public float firstRayDistance = 14f;
     public float secondRayDistance = 12f;
@@ -34,9 +35,9 @@ public class Shooting : MonoBehaviour
     void ShootingControl()
     {
         // Check if enough time has passed to shoot again
-        if (Time.time >= next_fire_time && canShoot)
+        if (Time.time >= nextFireTime && canShoot)
         {
-            if (is_auto_shoot)
+            if (isAutoShoot)
             {
                 FireBullet();
             }
@@ -49,7 +50,6 @@ public class Shooting : MonoBehaviour
             }
         }
     }
-
     void FireBullet()
     {
         // Determine the bullet's rotation based on the enemy's position
@@ -58,7 +58,7 @@ public class Shooting : MonoBehaviour
         if (isGroundEnemy)
         {
             // For ground enemies, shoot straight (no rotation needed)
-            bulletRotation = gun_transform.rotation;
+            bulletRotation = gunTransform.rotation;
         }
         else
         {
@@ -67,7 +67,7 @@ public class Shooting : MonoBehaviour
         }
 
         // Instantiate the bullet with the determined rotation
-        GameObject bullet = Instantiate(bullet_prefab, gun_transform.position, bulletRotation);
+        GameObject bullet = Instantiate(bulletPrefab, gunTransform.position, bulletRotation);
 
         // Get the Rigidbody2D of the bullet and apply force to move it forward
         Rigidbody2D bullet_rigidbody = bullet.GetComponent<Rigidbody2D>();
@@ -75,11 +75,11 @@ public class Shooting : MonoBehaviour
         if (bullet_rigidbody != null)
         {
             // Always apply force in the bullet's forward (right) direction
-            bullet_rigidbody.AddForce(bullet.transform.right * bullet_speed, ForceMode2D.Impulse);
+            bullet_rigidbody.AddForce(bullet.transform.right * bulletSpeed, ForceMode2D.Impulse);
         }
 
         // Set the next time you are allowed to shoot
-        next_fire_time = Time.time + fire_rate;
+        nextFireTime = Time.time + fireRate;
     }
 
 

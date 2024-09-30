@@ -135,12 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9db65533bb41e479e5c0c971544caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_speed: 2
-  strike_speed: 5
-  straightDuration: 3
+  enemySpeed: 3
+  strikeSpeed: 5
+  straightDuration: 4
   player_speed: 0
-  is_main_character: 0
-  is_flying_enemy: 1
+  isMainCharacter: 0
+  isFlyingEnemy: 1
 --- !u!82 &-3398197657521933556
 AudioSource:
   m_ObjectHideFlags: 0
