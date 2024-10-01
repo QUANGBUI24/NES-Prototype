@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7040491796464604224}
   - component: {fileID: -8056679225808531134}
   - component: {fileID: -4552449129351350476}
+  - component: {fileID: -4855240887028800801}
+  - component: {fileID: -3135928024272652871}
   m_Layer: 0
   m_Name: Small Ground Enemy
   m_TagString: Enemy
@@ -264,3 +266,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-4855240887028800801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878599692485595357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9368ddd2d670f44c9da40e6abdc3c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3135928024272652871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878599692485595357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c791ddb808289458b17285823414cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 100

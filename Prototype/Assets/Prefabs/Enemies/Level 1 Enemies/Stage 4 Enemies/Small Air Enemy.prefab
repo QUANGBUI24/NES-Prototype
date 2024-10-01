@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4554216217861221360}
   - component: {fileID: -3398197657521933556}
   - component: {fileID: -7902699953323546274}
+  - component: {fileID: 3047166150523209914}
+  - component: {fileID: 2456340243730180723}
   m_Layer: 0
   m_Name: Small Air Enemy
   m_TagString: Enemy
@@ -264,3 +266,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3047166150523209914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809059737439992366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9368ddd2d670f44c9da40e6abdc3c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2456340243730180723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809059737439992366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c791ddb808289458b17285823414cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 100

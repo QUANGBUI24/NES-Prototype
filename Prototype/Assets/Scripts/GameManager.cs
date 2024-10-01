@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
             playerHealth = 100;
         }
         playerArmor = PlayerPrefs.GetInt("PlayerArmor");
+        PlayerPrefs.SetInt("PlayerArmor", 100);
         playerMoney = PlayerPrefs.GetInt("PlayerMoney");
         volumeVal = PlayerPrefs.GetInt("Volume");
         PlayerPrefs.SetInt("GamePaused", 0);
