@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AutoMovement : MonoBehaviour
 {
-    public float enemySpeed = 3f;           // Speed for straight movement
+    public float enemySpeed = 1f;           // Speed for straight movement
     public float strikeSpeed = 5f;          // Speed for striking towards the player
     public float straightDuration = 8f;      // Time before the enemy starts striking
 
-    public float player_speed = 3f;          // Speed for player movement
+    public float playerSpeed = 0.5f;          // Speed for player movement
     public bool isMainCharacter = false;   // Flag to determine if this is the player
     public bool isFlyingEnemy = false;     // Flag to determine if this is a flying enemy
 
@@ -39,7 +39,7 @@ public class AutoMovement : MonoBehaviour
         if (isMainCharacter)
         {
             // Player moves to the right continuously
-            transform.Translate(Vector3.right * player_speed * Time.fixedDeltaTime);
+            transform.Translate(Vector3.right * playerSpeed * Time.fixedDeltaTime);
         }
         else if (isFlyingEnemy)
         {

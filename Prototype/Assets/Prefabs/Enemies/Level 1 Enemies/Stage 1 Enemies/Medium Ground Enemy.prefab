@@ -135,10 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9db65533bb41e479e5c0c971544caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 3
+  enemySpeed: 1
   strikeSpeed: 5
   straightDuration: 0
-  player_speed: 0
+  playerSpeed: 0
   isMainCharacter: 0
   isFlyingEnemy: 0
 --- !u!82 &4611957052669282526
